@@ -12,7 +12,6 @@ require_once "require/db.php";
         $mysql = MySQLDB::getInstance();
         $jobs = $mysql->getJobs();
 
-
         while ($row = $jobs->fetch_assoc()) {
 
             $name = $row["name"];
@@ -37,7 +36,8 @@ require_once "require/db.php";
             echo '</ul><hr>';
             echo '<button class="btn btn-default btn-block" type="button" data-toggle="modal" data-target="#modal"
                     data-job="Job 1" > Eintragen <span class="glyphicon glyphicon-edit" aria-hidden="true" ></span >
-            </button >';'
+            </button >';
+            '
         </div >
 
     </div >
