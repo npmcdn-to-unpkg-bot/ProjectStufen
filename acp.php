@@ -21,9 +21,7 @@ require_once "require/header.php";
             <hr>
             <button class="btn btn-default btn-block" type="button" data-toggle="modal" data-target="#modal" data-job="Job 1">Eintragen <span class="glyphicon glyphicon-edit" aria-hidden="true"></span></button>
         </div>
-    </div>
 
-    <div class="grid">
         <div class="grid-item color-green">
             <h2>Job 2</h2>
             <p>Kurze Beschreibung des Jobs?</p>
@@ -36,7 +34,9 @@ require_once "require/header.php";
             <hr>
             <button class="btn btn-default btn-block" type="button" data-toggle="modal" data-target="#modal" data-job="Job 1">Eintragen <span class="glyphicon glyphicon-edit" aria-hidden="true"></span></button>
         </div>
+
     </div>
+
 </div>
 
 <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="modal">
@@ -101,4 +101,3 @@ require_once "require/javascript.php";
 echo "<script src='js/grid.js'></script>";
 require_once "require/footer.php";
 ?>
-
