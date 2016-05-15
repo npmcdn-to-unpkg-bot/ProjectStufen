@@ -1,0 +1,57 @@
+body {
+    background-color: #ededed;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+ul li {
+    font-size: 16px;
+    padding: 5px;
+}
+
+ul li:nth-child(odd) {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+ul li a {
+    float: right;
+}
+
+.grid {
+    margin: 0 auto;
+}
+
+.grid-item {
+    border-radius: 17px;
+    color: white;
+    width: 325px;
+    margin: 0 auto 20px auto;
+    padding: 20px;
+}
+
+.color-blue {
+    background: linear-gradient(to top, rgb(4, 106, 157) 25%, rgb(11, 121, 194) 100%);
+    background: -moz-linear-gradient(bottom, rgb(4, 106, 157) 25%, rgb(11, 121, 194) 100%);
+    background: -webkit-linear-gradient(bottom, rgb(4, 106, 157) 25%, rgb(11, 121, 194) 100%);
+    background: -o-linear-gradient(bottom, rgb(4, 106, 157) 25%, rgb(11, 121, 194) 100%);
+    background: -ms-linear-gradient(bottom, rgb(4, 106, 157) 25%, rgb(11, 121, 194) 100%);
+}
+
+.color-red {
+    background: linear-gradient(to top, rgb(157, 4, 4) 25%, rgb(194, 11, 11) 100%);
+    background: -moz-linear-gradient(bottom, rgb(157, 4, 4) 25%, rgb(194, 11, 11) 100%);
+    background: -webkit-linear-gradient(bottom, rgb(157, 4, 4) 25%, rgb(194, 11, 11) 100%);
+    background: -o-linear-gradient(bottom, rgb(157, 4, 4) 25%, rgb(194, 11, 11) 100%);
+    background: -ms-linear-gradient(bottom, rgb(157, 4, 4) 25%, rgb(194, 11, 11) 100%);
+}
+
+.color-green {
+    background: linear-gradient(to top, rgb(0, 128, 72) 25%, rgb(0, 148, 83) 100%);
+    background: -moz-linear-gradient(bottom, rgb(0, 128, 72) 25%, rgb(0, 148, 83) 100%);
+    background: -webkit-linear-gradient(bottom, rgb(0, 128, 72) 25%, rgb(0, 148, 83) 100%);
+    background: -o-linear-gradient(bottom, rgb(0, 128, 72) 25%, rgb(0, 148, 83) 100%);
+    background: -ms-linear-gradient(bottom, rgb(0, 128, 72) 25%, rgb(0, 148, 83) 100%);
+}
