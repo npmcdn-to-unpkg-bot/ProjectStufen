@@ -57,7 +57,13 @@ class MySQLDB
 
     public function getJobs()
     {
-        $query = "SELECT * FROM jobs";
+        $query = "SELECT name,needed,description FROM jobs";
+        return $this->_mysqli->query($query);
+    }
+
+    public function getMembers($name = "")
+    {
+        $query = "SELECT name FROM members WHERE job = '$name' ORDER BY id DESC";
         return $this->_mysqli->query($query);
     }
 

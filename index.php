@@ -1,36 +1,52 @@
 <?php
 require_once "require/header.php";
-?>
+require_once "require/db.php";
+new MySQLDB("localhost", "root", "hBdapd223VPuazrmVK5Q", "stufen", "3306", "utf8") . connect();
+$mysql = MySQLDB::getInstance();
+$jobs = $mysql->getJobs();
 
-<div class="container">
+while ($row = $result->fetch_assoc()) {
+
+    $name = $row["name"];
+    $needed = $row["needed"];
+    $description = $row["description"];
+
+    $members = $mysql->getMembers($name);
+    $color = "";
+    if (mysqli_num_rows($members) >= $needed) {
+        $color = "grid-item color-green";
+    } else {
+        $color = "grid-item color-red";
+    }
+    echo '<div class="container">
     <div class="grid">
-        <div class="grid-item color-green">
-            <h2>Job 1</h2>
-            <p>Kurze Beschreibung des Jobs?</p>
+        <div class="' . $color . '">
+            <h2>' . $name . '</h2>
+            <p>Braucht: ' . $needed . ' Personen</p>
+            <p>' . $description . '</p>
             <hr>
-            <ul>
-                <li>Name Vorname</li>
-                <li>Name Vorname</li>
-                <li>Name Vorname</li>
-                <li>Name Vorname</li>
-                <li>Name Vorname</li>
-                <li>Name Vorname</li>
-                <li>Name Vorname</li>
-                <li>Name Vorname</li>
-                <li>Name Vorname</li>
-            </ul>
+            <ul>';
+    while ($row2 = mysqli_fetch_assoc($members)) {
+        echo '<li>' . $row2["name"] . '</li>';
+    }
+    echo '</ul>
             <hr>
-            <button class="btn btn-default btn-block" type="button" data-toggle="modal" data-target="#modal" data-job="Job 1">Eintragen <span class="glyphicon glyphicon-edit" aria-hidden="true"></span></button>
-        </div>
+            <button class="btn btn -default btn - block" type="button" data-toggle="modal" data-target="#modal"
+                    data - job = "Job 1" > Eintragen <span class="glyphicon glyphicon-edit" aria - hidden = "true" ></span >
+            </button >
+        </div >
 
-    </div>
-</div>
+    </div >
+</div > ';
+}
+?>
 
 <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="modal">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
                 <h4 class="modal-title" id="exampleModalLabel">Für Job eintragen</h4>
             </div>
             <form action="actions/register-action.php" method="post">
