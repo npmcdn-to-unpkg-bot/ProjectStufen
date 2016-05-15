@@ -33,19 +33,19 @@ require_once "require/header.php";
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 <h4 class="modal-title" id="exampleModalLabel">Für Job eintragen</h4>
             </div>
-            <div class="modal-body">
-                <form>
+            <form action="actions/register-action.php" method="post">
+                <div class="modal-body">
                     <div class="form-group">
                         <label for="recipient-name" class="control-label">Vor -und Nachname:</label>
-                        <input type="text" class="form-control" id="name" placeholder="Max Mustermann">
+                        <input type="text" class="form-control" name="name" placeholder="Max Mustermann">
                     </div>
-                    <input type="hidden" class="modal-job" id="job">
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Schließen</button>
-                <button type="button" class="btn btn-primary">Eintragen</button>
-            </div>
+                    <input type="hidden" id="modal-job" name="job">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Schließen</button>
+                    <button type="submit" class="btn btn-primary">Eintragen</button>
+                </div>
+            </form>
         </div>
     </div>
 </div>
