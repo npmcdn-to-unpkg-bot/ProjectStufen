@@ -6,24 +6,36 @@ require_once "require/header.php";
 
 <div class="container">
     <div class="grid">
-        <div class="grid-item color-green">
+        <div class="grid-item color-red">
             <h2>Job 1</h2>
             <p>Kurze Beschreibung des Jobs?</p>
             <hr>
             <ul>
-                <li>Name Vorname<a class="btn btn-default btn-xs" aria-label="Left Align" href="#"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a></li>
-                <li>Name Vorname<a class="btn btn-default btn-xs" aria-label="Left Align" href="#"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a></li>
-                <li>Name Vorname<a class="btn btn-default btn-xs" aria-label="Left Align" href="#"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a></li>
-                <li>Name Vorname<a class="btn btn-default btn-xs" aria-label="Left Align" href="#"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a></li>
-                <li>Name Vorname<a class="btn btn-default btn-xs" aria-label="Left Align" href="#"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a></li>
-                <li>Name Vorname<a class="btn btn-default btn-xs" aria-label="Left Align" href="#"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a></li>
-                <li>Name Vorname<a class="btn btn-default btn-xs" aria-label="Left Align" href="#"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a></li>
-                <li>Name Vorname<a class="btn btn-default btn-xs" aria-label="Left Align" href="#"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a></li>
+                <li>Max Mustermann<a class="btn btn-default btn-xs" aria-label="Left Align" href="#"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a></li>
+                <li>Max Mustermann<a class="btn btn-default btn-xs" aria-label="Left Align" href="#"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a></li>
+                <li>Max Mustermann<a class="btn btn-default btn-xs" aria-label="Left Align" href="#"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a></li>
+                <li>Max Mustermann<a class="btn btn-default btn-xs" aria-label="Left Align" href="#"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a></li>
+                <li>Max Mustermann<a class="btn btn-default btn-xs" aria-label="Left Align" href="#"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a></li>
+                <li>Max Mustermann<a class="btn btn-default btn-xs" aria-label="Left Align" href="#"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a></li>
             </ul>
             <hr>
             <button class="btn btn-default btn-block" type="button" data-toggle="modal" data-target="#modal" data-job="Job 1">Eintragen <span class="glyphicon glyphicon-edit" aria-hidden="true"></span></button>
         </div>
+    </div>
 
+    <div class="grid">
+        <div class="grid-item color-green">
+            <h2>Job 2</h2>
+            <p>Kurze Beschreibung des Jobs?</p>
+            <hr>
+            <ul>
+                <li><i>Noch nicht vergeben</i><a class="btn btn-default btn-xs" aria-label="Left Align" href="#" disabled="disabled"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a></li>
+                <li><i>Noch nicht vergeben</i><a class="btn btn-default btn-xs" aria-label="Left Align" href="#" disabled="disabled"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a></li>
+                <li><i>Noch nicht vergeben</i><a class="btn btn-default btn-xs" aria-label="Left Align" href="#" disabled="disabled"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a></li>
+            </ul>
+            <hr>
+            <button class="btn btn-default btn-block" type="button" data-toggle="modal" data-target="#modal" data-job="Job 1">Eintragen <span class="glyphicon glyphicon-edit" aria-hidden="true"></span></button>
+        </div>
     </div>
 </div>
 
