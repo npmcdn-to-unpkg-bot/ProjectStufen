@@ -1,7 +1,7 @@
 <?php
 
 //AUTH-Detection!!!
-require_once "require/mysql.php";
+require_once "../require/mysql.php";
 
 
 if (isset($_GET["job"]) && isset($_GET["name"])) {#

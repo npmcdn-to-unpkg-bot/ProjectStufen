@@ -1,5 +1,5 @@
 <?php
-require_once "require/mysql.php";
+require_once "../require/mysql.php";
 
 
 if (isset($_POST["name"]) && isset($_POST["job"])) {
