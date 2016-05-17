@@ -3,11 +3,10 @@ require_once "../require/mysql.php";
 
 
 if (isset($_POST["name"]) && isset($_POST["desc"]) && isset($_POST["quantity"])) {
-    $name = $_POST["name"];
-    $desc = $_POST["desc"];
-    $quantity = $_POST["quantity"];
+    $name = htmlspecialchars($_POST["name"]);
+    $desc = htmlspecialchars($_POST["desc"]);
+    $quantity = htmlspecialchars($_POST["quantity"]);
 
-    //Bug: PHP/JS Injection
 
     $sql = "INSERT INTO jobs (id, name, needed, description) VALUES ('', '$name', '$quantity', '$desc')";
 
