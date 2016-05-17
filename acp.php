@@ -1,5 +1,5 @@
 <?php
-require_once "require/header.php";
+require_once "require/headerACP.php";
 require_once "require/mysql.php";
 ?>
 

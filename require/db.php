@@ -54,29 +54,4 @@ class MySQLDB
             $this->_mysqli->set_charset($this->charset);
         }
     }
-
-    public function getJobs()
-    {
-        $query = "SELECT 'name','needed','description' FROM jobs";
-        return $this->_mysqli->query($query);
-    }
-
-    public function getMembers($name = "")
-    {
-        $query = "SELECT 'name' FROM members WHERE job = '$name' ORDER BY id DESC";
-        return $this->_mysqli->query($query);
-    }
-
-    /**
-     * Creates a job, based on the passed arguments
-     *
-     * @param string $name the name of the job
-     * @param int $needed how many people are needed
-     * @param string $description a short description of the job
-     */
-    public function createJob($name = "", $needed = 1, $description = "")
-    {
-        $query = "INSERT INTO jobs (name, needed, description), ('$name', '$needed', '$description')";
-        $this->_mysqli->query($query);
-    }
 }

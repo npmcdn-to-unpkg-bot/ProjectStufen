@@ -1,11 +1,11 @@
 <?php
 session_start();
 // check if user is verified for the normal zone (excluding acp)
-if (!isset($_SESSION['auth'])) {
-    header("Location: login.php");
+if (!isset($_SESSION['authACP'])) {
+    header("Location: acpLogin.php");
     die();
-} else if (!($_SESSION['auth'] == 1)) {
-    header("Location: login.php");
+} else if (!($_SESSION['authACP'] == 1)) {
+    header("Location: acpLogin.php");
     die();
 }
 ?>
@@ -29,7 +29,7 @@ if (!isset($_SESSION['auth'])) {
 <nav class="navbar navbar-inverse">
     <div class="container">
         <div class="navbar-header">
-            <a class="navbar-brand" href="#">Project Stufen</a>
+            <a class="navbar-brand" href="#">Project Stufen: Admin</a>
         </div>
     </div>
 </nav>
