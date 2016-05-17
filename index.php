@@ -1,49 +1,52 @@
 <?php
 require_once "require/header.php";
-require_once "require/db.php";
+require_once "require/mysql.php";
 ?>
 
-<h1>Test</h1>
 
 <div class="container">
     <div class="grid">
         <?php
-        new MySQLDB("localhost", "root", "hBdapd223VPuazrmVK5Q", "stufen", "3306", "utf8") . connect();
-        $mysql = MySQLDB::getInstance();
-        $jobs = $mysql->getJobs();
 
-        while ($row = $jobs->fetch_assoc()) {
+        $sql = "SELECT * FROM jobs";
+        $result = $mysqli->query($sql) or die($mysqli->error);
+
+        while ($row = $result->fetch_assoc()) {
 
             $name = $row["name"];
             $needed = $row["needed"];
             $description = $row["description"];
 
-            $members = $mysql->getMembers($name);
-            $color = "";
-            if (mysqli_num_rows($members) >= $needed) {
-                $color = "grid-item color-green";
-            } else {
-                $color = "grid-item color-red";
+            $sql_member = "SELECT * FROM members WHERE job = '$name' ORDER BY id";
+            $result_member = $mysqli->query($sql_member) or die($mysqli->error);
+
+            $color = "color-green";
+
+            $remaining_members = $needed - $result_member->num_rows;
+
+            if ($result_member->num_rows == $needed) {
+                $color = "color-red";
             }
-            echo '<div class="' . $color . '">';
+
+            echo '<div class="grid-item '.$color.'">';
             echo '<h2>' . $name . '</h2>';
-            echo '<p>Braucht: ' . $needed . ' Personen</p>';
             echo '<p>' . $description . '</p>';
             echo '<hr><ul>';
-            while ($row2 = $members->fetch_assoc()) {
-                echo '<li>' . $row2["name"] . '</li>';
+            while ($row_member = $result_member->fetch_assoc()) {
+                echo '<li>' . $row_member["name"] . '</li>';
+            }
+            for ($i = 0; $i < $remaining_members; $i++) {
+                echo '<li><i>Noch nicht vergeben</i></li>';
             }
             echo '</ul><hr>';
-            echo '<button class="btn btn-default btn-block" type="button" data-toggle="modal" data-target="#modal"
-                    data-job="Job 1" > Eintragen <span class="glyphicon glyphicon-edit" aria-hidden="true" ></span >
-            </button >';
-            '
-        </div >
-
-    </div >
-</div > ';
+            if ($result_member->num_rows == $needed) {
+                echo '<button class="btn btn-default btn-block" type="button" disabled="disabled">Eintragen <span class="glyphicon glyphicon-edit" aria-hidden="true"></span ></button >';
+            } else {
+                echo '<button class="btn btn-default btn-block" type="button" data-toggle="modal"
+                      data-target="#modal" data-job="'.$name.'">Eintragen <span class="glyphicon glyphicon-edit" aria-hidden="true"></span ></button >';
+            }
+            echo "</div>";
         }
-        ?>
         ?>
     </div>
 </div>

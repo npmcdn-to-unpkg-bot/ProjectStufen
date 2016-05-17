@@ -1,43 +1,57 @@
 <?php
 require_once "require/header.php";
+require_once "require/mysql.php";
 ?>
 
 <button class="btn btn-primary btn-add" type="button" data-toggle="modal" data-target="#add-modal"><span class="glyphicon glyphicon-plus"></span></button>
 
 <div class="container">
     <div class="grid">
-        <div class="grid-item color-red">
-            <h2>Job 1</h2>
-            <p>Kurze Beschreibung des Jobs?</p>
-            <hr>
-            <ul>
-                <li>Max Mustermann<a class="btn btn-default btn-xs" aria-label="Left Align" href="#"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a></li>
-                <li>Max Mustermann<a class="btn btn-default btn-xs" aria-label="Left Align" href="#"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a></li>
-                <li>Max Mustermann<a class="btn btn-default btn-xs" aria-label="Left Align" href="#"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a></li>
-                <li>Max Mustermann<a class="btn btn-default btn-xs" aria-label="Left Align" href="#"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a></li>
-                <li>Max Mustermann<a class="btn btn-default btn-xs" aria-label="Left Align" href="#"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a></li>
-                <li>Max Mustermann<a class="btn btn-default btn-xs" aria-label="Left Align" href="#"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a></li>
-            </ul>
-            <hr>
-            <button class="btn btn-default btn-block" type="button" data-toggle="modal" data-target="#modal" data-job="Job 1">Eintragen <span class="glyphicon glyphicon-edit" aria-hidden="true"></span></button>
-        </div>
+        <?php
 
-        <div class="grid-item color-green">
-            <h2>Job 2</h2>
-            <p>Kurze Beschreibung des Jobs?</p>
-            <hr>
-            <ul>
-                <li><i>Noch nicht vergeben</i><a class="btn btn-default btn-xs" aria-label="Left Align" href="#" disabled="disabled"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a></li>
-                <li><i>Noch nicht vergeben</i><a class="btn btn-default btn-xs" aria-label="Left Align" href="#" disabled="disabled"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a></li>
-                <li><i>Noch nicht vergeben</i><a class="btn btn-default btn-xs" aria-label="Left Align" href="#" disabled="disabled"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a></li>
-            </ul>
-            <hr>
-            <button class="btn btn-default btn-block" type="button" data-toggle="modal" data-target="#modal" data-job="Job 1">Eintragen <span class="glyphicon glyphicon-edit" aria-hidden="true"></span></button>
-        </div>
+        $sql = "SELECT * FROM jobs";
+        $result = $mysqli->query($sql) or die($mysqli->error);
 
+        while ($row = $result->fetch_assoc()) {
+
+            $name = $row["name"];
+            $needed = $row["needed"];
+            $description = $row["description"];
+
+            $sql_member = "SELECT * FROM members WHERE job = '$name' ORDER BY id";
+            $result_member = $mysqli->query($sql_member) or die($mysqli->error);
+
+            $color = "color-green";
+
+            $remaining_members = $needed - $result_member->num_rows;
+
+            if ($result_member->num_rows == $needed) {
+                $color = "color-red";
+            }
+
+            echo '<div class="grid-item '.$color.'">';
+            echo '<h2>' . $name . '</h2>';
+            echo '<p>' . $description . '</p>';
+            echo '<hr><ul>';
+            while ($row_member = $result_member->fetch_assoc()) {
+                echo '<li>' . $row_member["name"] . '<a class="btn btn-default btn-xs" aria-label="Left Align" href="actions/delete-action.php?job='.$name.'&name='.$row_member["name"].'"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a></li>';
+            }
+            for ($i = 0; $i < $remaining_members; $i++) {
+                echo '<li><i>Noch nicht vergeben</i><a class="btn btn-default btn-xs" aria-label="Left Align" href="#" disabled="disabled"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a></li>';
+            }
+            echo '</ul><hr>';
+            if ($result_member->num_rows == $needed) {
+                echo '<button class="btn btn-default btn-block" type="button" disabled="disabled">Eintragen <span class="glyphicon glyphicon-edit" aria-hidden="true"></span ></button >';
+            } else {
+                echo '<button class="btn btn-default btn-block" type="button" data-toggle="modal"
+                      data-target="#modal" data-job="'.$name.'">Eintragen <span class="glyphicon glyphicon-edit" aria-hidden="true"></span ></button >';
+            }
+            echo "</div>";
+        }
+        ?>
     </div>
-
 </div>
+
 
 <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="modal">
     <div class="modal-dialog" role="document">
@@ -78,13 +92,12 @@ require_once "require/header.php";
                     </div>
                     <div class="form-group">
                         <label class="control-label">Beschreibung:</label>
-                        <textarea class="form-control" name="beschreibung"></textarea>
+                        <textarea class="form-control" name="desc"></textarea>
                     </div>
                     <div class="form-group">
                         <label class="control-label">Anzahl der Teilnehmer:</label>
                         <input type="number" name="quantity" min="1" max="99">
                     </div>
-                    <input type="hidden" id="modal-job" name="job">
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Schließen</button>
