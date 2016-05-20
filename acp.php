@@ -30,6 +30,8 @@ require_once "require/mysql.php";
             }
 
             echo '<div class="grid-item '.$color.'">';
+            echo '<button class="delete_job" type="button" data-toggle="delete-job-modal"
+                      data-target="#delete-job-modal" data-job="'.$name.'"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span ></button >';
             echo '<h2>' . $name . '</h2>';
             echo '<p>' . $description . '</p>';
             echo '<hr><ul>';
@@ -104,6 +106,22 @@ require_once "require/mysql.php";
                     <button type="submit" class="btn btn-primary">Job hinzufügen</button>
                 </div>
             </form>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="delete-job-modal" tabindex="-1" role="dialog" aria-labelledby="delete-job-modal">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Soll der Job wirklich gelöscht werden?</h4>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Nein</button>
+                <a href="#" id="delete-job-button" class="btn btn-primary">Ja</a>
+            </div>
         </div>
     </div>
 </div>

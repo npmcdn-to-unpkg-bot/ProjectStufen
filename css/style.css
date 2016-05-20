@@ -100,3 +100,13 @@ input[type="password"] {
     border-radius: 0;
     margin-bottom: 0;
 }
+
+
+.delete_job {
+    background:none;
+    border:none;
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    color: white;
+}
