@@ -2,10 +2,10 @@
 session_start();
 // check if user is verified for the normal zone (excluding acp)
 if (!isset($_SESSION['authACP'])) {
-    header("Location: ../login.php");
+    header("Location: login.php");
     die();
 } else if (!($_SESSION['authACP'] == 1)) {
-    header("Location: ../login.php");
+    header("Location: login.php");
     die();
 }
 ?>
