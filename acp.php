@@ -30,7 +30,7 @@ require_once "require/mysql.php";
             }
 
             echo '<div class="grid-item '.$color.'">';
-            echo '<button class="delete_job" type="button" data-toggle="delete-job-modal"
+            echo '<button class="delete_job" type="button" data-toggle="modal"
                       data-target="#delete-job-modal" data-job="'.$name.'"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span ></button >';
             echo '<h2>' . $name . '</h2>';
             echo '<p>' . $description . '</p>';

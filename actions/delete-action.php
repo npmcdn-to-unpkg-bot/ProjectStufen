@@ -1,12 +1,12 @@
 <?php
-
+session_start();
 if (isset($_SESSION['authACP'])) {
     if ($_SESSION['authACP'] == 1) {
 
         require_once "../require/mysql.php";
 
 
-        if (isset($_GET["job"]) && isset($_GET["name"])) {#
+        if (isset($_GET["job"]) && isset($_GET["name"])) {
             $job = $_GET["job"];
             $name = $_GET["name"];
 
@@ -17,7 +17,7 @@ if (isset($_SESSION['authACP'])) {
             $mysqli->query($sql) or die($mysqli->error);
             header("Location: ../acp.php");
         } else {
-            header("Location: ../index.php");
+            header("Location: ../acp.php");
         }
 
     } else {

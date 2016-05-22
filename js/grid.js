@@ -19,6 +19,6 @@ $('#delete-job-modal').on('show.bs.modal', function (event) {
     var button = $(event.relatedTarget);
     var job = button.data('job');
     var modal = $(this);
-    modal.find('.modal-title').text('Soll der Job"' + job + '" wirklich gelöscht werden?');
+    modal.find('.modal-title').text('Soll der Job "' + job + '" wirklich gelöscht werden?');
     document.getElementById("delete-job-button").href = "actions/delete-job-action.php?job=" + job;
 });
