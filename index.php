@@ -3,6 +3,19 @@ require_once "require/header.php";
 require_once "require/mysql.php";
 ?>
 
+<!-- Navigation -->
+
+<nav class="navbar navbar-inverse">
+    <div class="container">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">Project Stufen</a>
+	    <a class="navbar-brand" href="https://github.com/jhdv/ProjectStufen">OpenSource: GitHub</a>
+
+        </div>
+    </div>
+</nav>
+
+<!-- Navigation ENDE -->
 
 <div class="container">
     <div class="grid">

@@ -26,6 +26,7 @@ if (isset($_SESSION['auth']) && ($_SESSION['auth'] == 1)) {
     <div class="container">
         <div class="navbar-header">
             <a class="navbar-brand" href="#">Project Stufen</a>
+<a class="navbar-brand" href="https://github.com/jhdv/ProjectStufen">OpenSource: GitHub</a
         </div>
     </div>
 </nav>
